@@ -29,7 +29,7 @@ const sizeInput = document.querySelector(`#sizeSlider`);
 const sizeValue = document.querySelector(`.size-value`);
 const colorSelector = document.querySelector(`#colorPicker`);
 const colorBtn = document.querySelector(`#colorBtn`);
-const rainbowBtn = document.querySelector(`#colorBtn`);
+const rainbowBtn = document.querySelector(`#rainbowBtn`);
 const clearBtn = document.querySelector(`#clearBtn`);
 
 // attach event listeners to DOM elements
@@ -75,11 +75,11 @@ function makeGrid (size) {
             const newSquare = document.createElement('div');
             newSquare.classList.add('square');
             //newSquare.style.border = "1px solid black";
-            row.appendChild(newSquare);
             let height =  960 / size;
             newSquare.style.height = `${height}px`;
             newSquare.addEventListener('mouseover', changeColor);
             newSquare.addEventListener('mousedown', changeColor);
+            row.appendChild(newSquare);
 
         }
     }
@@ -97,8 +97,6 @@ function makeGrid (size) {
     // });
 }
 
-
-
 function changeColor (e) {
     if (e.type === 'mouseover' && !mouseDown) return;
     if (currentMode === 'rainbow') {
@@ -111,8 +109,6 @@ function changeColor (e) {
     }
     
 }
-
-
 
 function activateMode (newMode) {
    if (currentMode === 'rainbow') {
