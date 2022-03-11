@@ -18,10 +18,7 @@ function makeGrid (size) {
             let height =  960 / size;
             newSquare.style.height = `${height}px`;
         }
-    } 
-    
-    
-    
+    }  
 }
 
 
