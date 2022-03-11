@@ -30,13 +30,13 @@ const sizeValue = document.querySelector(`.size-value`);
 const colorSelector = document.querySelector(`#colorPicker`);
 const colorBtn = document.querySelector(`#colorBtn`);
 const rainbowBtn = document.querySelector(`#colorBtn`);
-const buttonReset = document.querySelector(`.reset`);
+const clearBtn = document.querySelector(`#clearBtn`);
 
 // attach event listeners to DOM elements
-colorSelector.addEventListener('onchange', (e) => setCurrentColor(e.target.value));
+colorSelector.addEventListener('change', (e) => setCurrentColor(e.target.value));
 colorBtn.addEventListener('click', setCurrentMode('color'));
 rainbowBtn.addEventListener('click', setCurrentMode('rainbow'));
-buttonReset.addEventListener('click', () => reloadGrid());
+clearBtn.addEventListener('click', () => reloadGrid());
 sizeInput.addEventListener('mousemove', (e) => updateSizeValue(e.target.value));
 sizeInput.addEventListener('change', (e) => changeSize(e.target.value));
 
@@ -57,15 +57,13 @@ function updateSizeValue(value) {
 
 function reloadGrid () {
     clearGrid();
-    makeGrid();
+    makeGrid(currentSize);
 }
 
 function clearGrid() {
-    squares.innerHTML = ''
+    squares.innerHTML = '';
 }
 
-
-//makeGrid(sizeInput.value);
 
 function makeGrid (size) {
     for (let i = 0; i < size; i++) {
@@ -86,17 +84,17 @@ function makeGrid (size) {
         }
     }
     
-    const allSquares = document.querySelectorAll('.square');
-    allSquares.forEach( item => {
-        item.addEventListener('mouseover', () => {
-            item.classList.add('hover');
-            // //reset color after short delay
-            // setTimeout( () => {
-            //     item.classList.remove('hover');
-            // },500);
+    // const allSquares = document.querySelectorAll('.square');
+    // allSquares.forEach( item => {
+    //     item.addEventListener('mouseover', () => {
+    //         item.classList.add('hover');
+    //         // //reset color after short delay
+    //         // setTimeout( () => {
+    //         //     item.classList.remove('hover');
+    //         // },500);
                 
-        });
-    });
+    //     });
+    // });
 }
 
 
@@ -131,7 +129,7 @@ function activateMode (newMode) {
 }
 
 window.addEventListener('load', () => {
-    setupGrid(DEFAULT_SIZE);
+    makeGrid(DEFAULT_SIZE);
     activateMode(DEFAULT_MODE);
 });
 
