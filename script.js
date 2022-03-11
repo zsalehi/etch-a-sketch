@@ -14,7 +14,7 @@ function setCurrentColor (newColor) {
     currentColor = newColor;
 }
 
-function setCurrentMode (newMode) {
+function setCurrentMode(newMode) {
     activateMode(newMode);
     currentMode = newMode;
 }
@@ -34,8 +34,8 @@ const clearBtn = document.querySelector(`#clearBtn`);
 
 // attach event listeners to DOM elements
 colorSelector.addEventListener('change', (e) => setCurrentColor(e.target.value));
-colorBtn.addEventListener('click', setCurrentMode('color'));
-rainbowBtn.addEventListener('click', setCurrentMode('rainbow'));
+colorBtn.addEventListener('click', () => setCurrentMode('color'));
+rainbowBtn.addEventListener('click', () =>setCurrentMode('rainbow'));
 clearBtn.addEventListener('click', () => reloadGrid());
 sizeInput.addEventListener('mousemove', (e) => updateSizeValue(e.target.value));
 sizeInput.addEventListener('change', (e) => changeSize(e.target.value));
@@ -70,11 +70,9 @@ function makeGrid (size) {
         const row = document.createElement('div');
         row.classList.add('row');
         squares.appendChild(row);
-        //console.log(i);
         for (let x = 0; x < size; x++) {
             const newSquare = document.createElement('div');
             newSquare.classList.add('square');
-            //newSquare.style.border = "1px solid black";
             let height =  960 / size;
             newSquare.style.height = `${height}px`;
             newSquare.addEventListener('mouseover', changeColor);
@@ -83,18 +81,6 @@ function makeGrid (size) {
 
         }
     }
-    
-    // const allSquares = document.querySelectorAll('.square');
-    // allSquares.forEach( item => {
-    //     item.addEventListener('mouseover', () => {
-    //         item.classList.add('hover');
-    //         // //reset color after short delay
-    //         // setTimeout( () => {
-    //         //     item.classList.remove('hover');
-    //         // },500);
-                
-    //     });
-    // });
 }
 
 function changeColor (e) {
