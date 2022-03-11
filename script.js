@@ -1,6 +1,8 @@
 const squares = document.querySelector(`.sketchpad`);
+const buttonReset = document.querySelector(`.reset`);
+
 //const askGrid = 
-let gridSize = 16;
+let gridSize = 32;
 
 function makeGrid (size) {
     for (let i = 0; i < size; i++) {
@@ -18,16 +20,29 @@ function makeGrid (size) {
         }
     } 
     
-    const allSquares = document.querySelectorAll('.square');
-    allSquares.forEach( item => {
-        item.addEventListener('mouseover', () => {
-            item.classList.add('hover');
-        })
-    })
-
     
-
+    
 }
+
 
 makeGrid(gridSize);
 
+const allSquares = document.querySelectorAll('.square');
+allSquares.forEach( item => {
+    item.addEventListener('mouseover', () => {
+        item.classList.add('hover');
+
+        // //reset color after short delay
+        // setTimeout( () => {
+        //     item.classList.remove('hover');
+        // },500);
+            
+    });
+});
+
+buttonReset.addEventListener('click', () => {
+    allSquares.forEach( item => {
+        item.classList.remove('hover');
+    });
+    
+});

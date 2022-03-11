@@ -16,12 +16,11 @@
 .square {
     box-sizing: border-box;
     width: 100%;
-    background-color: gray;
     border: 1px solid black;
 
 }
 
 
-.square:hover {
-
+.hover {
+    background-color: black;
 }
